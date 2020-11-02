@@ -1,5 +1,6 @@
 int x = 2;
 boolean y = true;
+
 int dfd++=2-3+ "shh";
+int a = if;
 int a;
-a;

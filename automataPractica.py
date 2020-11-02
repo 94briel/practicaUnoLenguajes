@@ -548,7 +548,7 @@ def empty_list(lt):
 
 
 for linea in archivo:
-
+    contadorfallos = 0
     contador = contador + 1
     symbols = {'+', '-', '~', '*', '/', '%', '<', '>', '=', '!', '&', '^'}
     tokenstuple = []
@@ -585,49 +585,64 @@ for linea in archivo:
     if est == "ERROR1":
         fallo = "Linea " + str(contador) + ":El nombre de la variable empieza con un carácter invalido"
         errores.append(fallo)
+        contadorfallos += 1
     elif est == "ERROR2":
         fallo = "Linea " + str(contador) + ":Uso de signos prohibidos en el nombramiento de la variable"
         errores.append(fallo)
+        contadorfallos += 1
     elif est == "ERROR3":
         fallo = "Linea " + str(contador) + ":Uso de espacios en el nombramiento de la variable"
         errores.append(fallo)
+        contadorfallos += 1
     elif est == "ERROR4":
         fallo = "Linea " + str(contador) + ":Uso de signos prohibidos"
         errores.append(fallo)
+        contadorfallos += 1
     elif est == "E":
         fallo = "Linea " + str(contador) + ":Comillas sin cerrar"
         errores.append(fallo)
+        contadorfallos += 1
     elif est == "ERROR5":
         fallo = "Linea " + str(contador) + ":Uso de signos prohibidos despues del cierre de comillas"
         errores.append(fallo)
+        contadorfallos += 1
     elif est == "ERROR6":
         fallo = "Linea " + str(contador) + ":Uso de signos prohibidos despues de un operador aritmetico"
         errores.append(fallo)
+        contadorfallos += 1
     elif est == "ERROR7":
         fallo = "Linea " + str(contador) + ":Uso indebido de comillas"
         errores.append(fallo)
+        contadorfallos += 1
     elif est == "ERROR8":
         fallo = "Linea " + str(contador) + ":Uso de signos que no son el respectivo operador logico"
         errores.append(fallo)
+        contadorfallos += 1
     elif est == "ERROR9":
         fallo = "Linea " + str(contador) + ":Uso de signos que no son el respecto '=' "
         errores.append(fallo)
+        contadorfallos += 1
     elif est == "ERROR10":
         fallo = "Linea " + str(
             contador) + ":Signos invalidos despues de los operadores de incremento o decremento '++' / '--' "
         errores.append(fallo)
+        contadorfallos += 1
     elif est == "ERROR11":
         fallo = "Linea " + str(contador) + ":Cantidad de caracteres mayor de la permitida"
         errores.append(fallo)
+        contadorfallos += 1
     elif est == "ERROR12":
         fallo = "Linea " + str(contador) + ":Linea vacia"
         errores.append(fallo)
+        contadorfallos += 1
     elif est != "¬":
         fallo = "Linea " + str(contador) + ":Falta el operador de cierre ';'"
         errores.append(fallo)
-    if (len(errores) == 0):
+        contadorfallos += 1
+    if(contadorfallos == 0):
         print(token_to_LSL())
     tokenstuple.clear()
+    contadorfallos = 0
 
 for i in range(len(errores)):
     print(errores[i])
